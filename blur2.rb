@@ -44,8 +44,3 @@ image.output_image
 puts "--"
 image.blur
 image.output_image
-
-# deep copy @image array inside blur method
-# use copy to look for ones, use original to modify
-# one at a time: put one pixel in middle bottom row - see what happens;
-# one pixel middle row right hand side
