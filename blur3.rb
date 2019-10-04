@@ -9,7 +9,14 @@ class Image
     end
   end
 
-  def blur
+  def blur(distance)
+    distance.times do 
+      secret_blur
+    end
+    output_image
+  end
+
+  def secret_blur
     blurred = Marshal.load( Marshal.dump(@image) )
     blurred.each_index do |row|
       blurred[row].each_index do |pixel|
@@ -34,12 +41,14 @@ end
 
 
 image = Image.new([
-  [0, 0, 0, 0],
-  [0, 1, 0, 0],
-  [0, 0, 0, 1],
-  [0, 0, 0, 0]
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ])
 image.output_image
 puts "--"
-image.blur
-image.output_image
+image.blur(3)
